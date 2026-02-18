@@ -194,3 +194,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($result) $result->close();
 $conn->close();
 ?>
+
+
+logout:
+<?php
+session_start();
+
+$_SESSION=array();
+
+session_destroy();
+
+header("Location: Login.php");
+exit();
+
+?>
