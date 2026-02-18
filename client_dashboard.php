@@ -22,6 +22,7 @@ $stmt->bind_param("i",$client_id);
 $stmt->execute();
 
 $result = $stmt->get_result();
+$stmt->close();
 ?>
 
 <!DOCTYPE HTML>
@@ -35,6 +36,7 @@ $result = $stmt->get_result();
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Tichetele Mele</h2>
+        <a href="logout.php" class="btn btn-outline-danger">Logout</a>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead class="table-dark">
@@ -57,7 +59,7 @@ $result = $stmt->get_result();
                                         <?php echo htmlspecialchars($row['status']); ?>
                                     </span>
                                 </td>
-                                <td><?php echo $row['created_at']; ?></td>
+                                <td><?php echo htmlspecialchars($row['created_at']); ?></td>
                                 <td>
     <a href="view_ticket.php?id=<?php echo $row['Id']; ?>" class="btn btn-sm btn-success">
         deschide

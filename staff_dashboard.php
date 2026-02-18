@@ -43,6 +43,7 @@ $result = $stmt->get_result();
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Tichetele</h2>
+        <a href="logout.php" class="btn btn-outline-danger">Logout</a>
         <div class="row mb-4">
             <div class="col mb-6">
                 <form method="GET" class="d-flex gap-2">

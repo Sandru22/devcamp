@@ -51,12 +51,25 @@ $messages = $msg_stmt->get_result();
             </div>
         <?php endwhile; ?>
     </div>
-
+            <?php if ( $ticket['status'] !== 'closed'): ?>
     <form action="send_message.php" method="POST">
         <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
         <textarea name="message" class="form-control mb-2" placeholder="Scrie un răspuns..." required></textarea>
         <button type="submit" class="btn btn-primary">Trimite Răspuns</button>
     </form>
+    <?php endif; ?>
+    <?php if ($_SESSION['role'] == 'staff' && $ticket['status'] !== 'closed'): ?>
+    <div class="mt-3 p-3 border rounded bg-light">
+        <h5>Acțiuni Staff:</h5>
+        <form method="POST" action="send_message.php">
+            <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
+            <button type="submit" name="close_ticket" class="btn btn-danger">
+                Închide Tichetul
+            </button>
+        </form>
+    </div>
+<?php endif; ?>
+
 </div>
         </body>
         </html>
